@@ -1,0 +1,18 @@
+{
+  "name": "bitrig-agent-project-bridge",
+  "version": "0.2.0",
+  "description": "Guide Codex through creating and verifying native Bitrig Agent projects from local iOS projects.",
+  "author": {
+    "name": "Bitrig Agent Project Bridge maintainers"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Bitrig Agent Project Bridge",
+    "shortDescription": "Bridge Codex iOS projects into Bitrig Remote.",
+    "longDescription": "Bitrig Agent Project Bridge adds a reusable workflow for inspecting a local iOS project, preparing a native Bitrig Agent project prompt, guiding setup in Bitrig, and verifying the local evidence needed before the user confirms Bitrig Remote on iPhone.",
+    "developerName": "Bitrig Agent Project Bridge maintainers",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Use $bitrig-agent-project-bridge to prepare and verify a Bitrig Remote-ready Agent project from this local iOS project."
+  }
+}

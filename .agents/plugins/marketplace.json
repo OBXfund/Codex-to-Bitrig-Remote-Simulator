@@ -1,0 +1,20 @@
+{
+  "name": "bitrig-agent-project-bridge-marketplace",
+  "interface": {
+    "displayName": "Bitrig Agent Project Bridge"
+  },
+  "plugins": [
+    {
+      "name": "bitrig-agent-project-bridge",
+      "source": {
+        "source": "local",
+        "path": "./plugins/bitrig-agent-project-bridge"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

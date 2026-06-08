@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bitrig Agent Project Bridge"
+  short_description: "Create Bitrig Remote-ready Agent projects"
+  default_prompt: "Use $bitrig-agent-project-bridge to prepare and verify a Bitrig Remote-ready Agent project from this local iOS project."
