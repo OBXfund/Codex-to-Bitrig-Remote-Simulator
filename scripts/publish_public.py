@@ -69,6 +69,11 @@ def main() -> int:
         help="Private term to reject during release and install verification. Repeat as needed.",
     )
     parser.add_argument("--no-push", action="store_true", help="Run checks and remote setup without pushing.")
+    parser.add_argument(
+        "--force-with-lease",
+        action="store_true",
+        help="Replace the remote branch only if it still points to the fetched value. Use for fixing an existing invalid marketplace branch.",
+    )
     parser.add_argument("--skip-remote-verify", action="store_true", help="Skip clean Codex install verification from the remote URL.")
     args = parser.parse_args()
     private_terms = forbidden_terms(args)
@@ -88,7 +93,10 @@ def main() -> int:
         print("[Publish] Skipped push because --no-push was supplied.")
     else:
         print(f"[Publish] Pushing {args.branch} to {args.remote}.")
-        run(["git", "push", "-u", args.remote, args.branch])
+        push_command = ["git", "push", "-u", args.remote, args.branch]
+        if args.force_with_lease:
+            push_command.insert(2, "--force-with-lease")
+        run(push_command)
 
     if args.skip_remote_verify:
         print("[Verify] Skipped remote install verification.")

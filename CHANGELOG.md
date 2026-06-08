@@ -10,6 +10,7 @@
 - Added clean Codex profile install verification for marketplace installation confidence.
 - Added public marketplace source verification support to the clean Codex install verifier.
 - Added one-command public publish helper that checks, pushes, and verifies install from the public source.
+- Added lease-protected replacement mode for fixing an existing invalid public marketplace branch.
 
 ## 0.1.0
 

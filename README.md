@@ -68,6 +68,12 @@ python3 scripts/publish_public.py <public-repository-url>
 
 This command runs release checks, verifies clean local Codex install, pushes `main`, then verifies clean Codex install from the public source URL.
 
+If the public repository already has unrelated placeholder files or an uploaded zip instead of the marketplace root, use the lease-protected replacement mode:
+
+```bash
+python3 scripts/publish_public.py <public-repository-url> --force-with-lease
+```
+
 5. Verify from another Codex installation or a clean profile:
 
 ```bash
