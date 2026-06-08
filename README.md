@@ -70,6 +70,12 @@ codex plugin list
 
 If another local plugin with the same name is already installed, remove or disable the older one before testing public installation. Duplicate plugin names can make invocation ambiguous even when the public package is valid.
 
+You can also run the automated clean-profile verifier before publishing:
+
+```bash
+python3 scripts/verify_clean_codex_install.py
+```
+
 ## Local Development
 
 Run the release checks:
@@ -85,6 +91,12 @@ RELEASE_FORBIDDEN_TERMS="term-one,term-two" python3 scripts/release_check.py
 ```
 
 The release gate validates marketplace metadata, plugin metadata, skill frontmatter, Python helper compilation, dry-run behavior, generic-name rejection, and hardcoded user-home path removal.
+
+Verify that Codex can install the marketplace into a clean profile:
+
+```bash
+python3 scripts/verify_clean_codex_install.py
+```
 
 Build a clean source archive:
 
