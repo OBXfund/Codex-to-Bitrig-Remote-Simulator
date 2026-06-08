@@ -68,6 +68,12 @@ def scan_installed_cache(root: Path, forbidden_terms: list[str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify the marketplace installs into a clean Codex home.")
     parser.add_argument(
+        "--source",
+        default=str(ROOT),
+        help="Marketplace source to add. Use a local path, owner/repo, HTTPS Git URL, or SSH Git URL.",
+    )
+    parser.add_argument("--ref", help="Optional Git ref to pass to codex plugin marketplace add.")
+    parser.add_argument(
         "--forbidden-term",
         action="append",
         default=[],
@@ -79,7 +85,10 @@ def main() -> int:
     codex = codex_binary()
     with tempfile.TemporaryDirectory() as tmp:
         home = Path(tmp)
-        run([codex, "plugin", "marketplace", "add", str(ROOT)], home=home)
+        marketplace_command = [codex, "plugin", "marketplace", "add", args.source]
+        if args.ref:
+            marketplace_command.extend(["--ref", args.ref])
+        run(marketplace_command, home=home)
         run([codex, "plugin", "add", f"{PLUGIN}@{MARKETPLACE}"], home=home)
         listing = run([codex, "plugin", "list"], home=home).stdout
 
@@ -98,6 +107,8 @@ def main() -> int:
 
         payload = {
             "status": "clean_install_verified",
+            "source": args.source,
+            "ref": args.ref,
             "marketplace": MARKETPLACE,
             "plugin": PLUGIN,
             "version": VERSION,

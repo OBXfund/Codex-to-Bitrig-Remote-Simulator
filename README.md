@@ -76,6 +76,12 @@ You can also run the automated clean-profile verifier before publishing:
 python3 scripts/verify_clean_codex_install.py
 ```
 
+After publishing, verify the public repository URL directly:
+
+```bash
+python3 scripts/verify_clean_codex_install.py --source <public-repository-url>
+```
+
 ## Local Development
 
 Run the release checks:
@@ -96,6 +102,12 @@ Verify that Codex can install the marketplace into a clean profile:
 
 ```bash
 python3 scripts/verify_clean_codex_install.py
+```
+
+Verify an already-published source:
+
+```bash
+python3 scripts/verify_clean_codex_install.py --source <repository-url> --ref main
 ```
 
 Build a clean source archive:
