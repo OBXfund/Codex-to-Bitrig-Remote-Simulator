@@ -65,6 +65,12 @@ def scan_installed_cache(root: Path, forbidden_terms: list[str]) -> None:
                 fail(f"forbidden term in installed cache: {path.relative_to(root)}")
 
 
+def source_supports_ref(source: str) -> bool:
+    if source.startswith(("http://", "https://", "ssh://", "git@")):
+        return True
+    return not Path(source).expanduser().exists()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify the marketplace installs into a clean Codex home.")
     parser.add_argument(
@@ -86,7 +92,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         home = Path(tmp)
         marketplace_command = [codex, "plugin", "marketplace", "add", args.source]
-        if args.ref:
+        if args.ref and source_supports_ref(args.source):
             marketplace_command.extend(["--ref", args.ref])
         run(marketplace_command, home=home)
         run([codex, "plugin", "add", f"{PLUGIN}@{MARKETPLACE}"], home=home)

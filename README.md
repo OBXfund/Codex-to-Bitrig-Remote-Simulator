@@ -60,7 +60,15 @@ python3 scripts/package_release.py --version 0.2.0
 
 3. Upload the repository contents, or the generated archive contents, to a public Git repository.
 
-4. Verify from another Codex installation or a clean profile:
+4. Or publish and verify in one command after creating a public Git repository:
+
+```bash
+python3 scripts/publish_public.py <public-repository-url>
+```
+
+This command runs release checks, verifies clean local Codex install, pushes `main`, then verifies clean Codex install from the public source URL.
+
+5. Verify from another Codex installation or a clean profile:
 
 ```bash
 codex plugin marketplace add <public-repository-url>
