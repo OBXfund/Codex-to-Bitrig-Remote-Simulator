@@ -6,6 +6,7 @@
 - Added portable `bitrig_agent_bridge.py` orchestration command.
 - Added stricter Agent-name derivation and generic-name rejection.
 - Added public install, verification, and release-gate documentation.
+- Added release-check and source-archive packaging scripts for public repository publication.
 
 ## 0.1.0
 

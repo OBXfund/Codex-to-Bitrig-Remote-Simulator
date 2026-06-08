@@ -44,6 +44,32 @@ or:
 Use $bitrig-agent-project-bridge to prepare a Bitrig Agent project from this local iOS project.
 ```
 
+## Publish To A Public Repository
+
+1. Run the release gate:
+
+```bash
+RELEASE_FORBIDDEN_TERMS="term-one,term-two" python3 scripts/release_check.py
+```
+
+2. Build a clean archive from tracked files:
+
+```bash
+python3 scripts/package_release.py --version 0.2.0
+```
+
+3. Upload the repository contents, or the generated archive contents, to a public Git repository.
+
+4. Verify from another Codex installation or a clean profile:
+
+```bash
+codex plugin marketplace add <public-repository-url>
+codex plugin add bitrig-agent-project-bridge@bitrig-agent-project-bridge-marketplace
+codex plugin list
+```
+
+If another local plugin with the same name is already installed, remove or disable the older one before testing public installation. Duplicate plugin names can make invocation ambiguous even when the public package is valid.
+
 ## Local Development
 
 Run the release checks:
@@ -59,6 +85,14 @@ RELEASE_FORBIDDEN_TERMS="term-one,term-two" python3 scripts/release_check.py
 ```
 
 The release gate validates marketplace metadata, plugin metadata, skill frontmatter, Python helper compilation, dry-run behavior, generic-name rejection, and hardcoded user-home path removal.
+
+Build a clean source archive:
+
+```bash
+python3 scripts/package_release.py
+```
+
+Archives are written under `dist/` and intentionally exclude Git internals, runtime output, and ignored cache files.
 
 ## Runtime Commands
 
