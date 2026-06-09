@@ -4,6 +4,27 @@ This repository is a Codex marketplace source for the `bitrig-agent-project-brid
 
 The plugin guides Codex through preparing a native Bitrig Agent project from a local iOS project, verifying local Bitrig evidence, and telling the user exactly what must be confirmed in Bitrig Remote on iPhone.
 
+## Quick Install
+
+Install from the public Codex marketplace source:
+
+```bash
+codex plugin marketplace add https://github.com/OBXfund/Codex-to-Bitrig-Remote-Simulator.git
+codex plugin add bitrig-agent-project-bridge@bitrig-agent-project-bridge-marketplace
+```
+
+Confirm the plugin is installed:
+
+```bash
+codex plugin list | grep bitrig-agent-project-bridge
+```
+
+Then start a new Codex thread and ask:
+
+```text
+Use $bitrig-agent-project-bridge to prepare a Bitrig Agent project from this local iOS project.
+```
+
 ## What It Does
 
 - Detects whether a local project looks iOS-capable.
@@ -27,10 +48,11 @@ The plugin must not claim Bitrig Remote success until the user confirms those po
 From Codex CLI, add this repository as a marketplace source:
 
 ```bash
-codex plugin marketplace add <repository-url>
+codex plugin marketplace add https://github.com/OBXfund/Codex-to-Bitrig-Remote-Simulator.git
+codex plugin add bitrig-agent-project-bridge@bitrig-agent-project-bridge-marketplace
 ```
 
-Then open the Codex plugin directory, choose the marketplace named `bitrig-agent-project-bridge-marketplace`, and install **Bitrig Agent Project Bridge**.
+Or open the Codex plugin directory, choose the marketplace named `bitrig-agent-project-bridge-marketplace`, and install **Bitrig Agent Project Bridge**.
 
 After installation, start a new Codex thread and invoke:
 
